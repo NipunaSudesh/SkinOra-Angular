@@ -1,0 +1,43 @@
+<div class="group w-64 cursor-pointer"
+     (click)="navigate()">
+
+  <div class="bg-white rounded-xl shadow-md border border-gray-300
+              hover:shadow-2xl transition-all duration-300">
+
+    <div class="w-full h-60 overflow-hidden rounded-t-xl">
+      <img [src]="imgUrl"
+           alt="productName"
+           class="w-full h-full object-cover
+                  transition-transform duration-500
+                  group-hover:scale-110" />
+    </div>
+
+    <div class="p-4">
+
+      <h4 class="font-semibold text-lg text-primary">
+        {{ productName }}
+      </h4>
+
+      <p class="text-sm text-gray-500">
+        {{ productDesc }}
+      </p>
+
+      <div class="flex items-end gap-3 mt-2">
+        <p *ngIf="OPrice"
+           class="text-sm text-gray-400 line-through">
+          Rs. {{ OPrice }}
+        </p>
+
+        <p class="text-xl font-bold text-primary">
+          Rs. {{ NPrice }}
+        </p>
+      </div>
+
+      <button (click)="handleCart(); $event.stopPropagation()"
+              class="mt-4 bg-secondary text-white py-2 rounded-lg w-full">
+        Add To Cart
+      </button>
+
+    </div>
+  </div>
+</div>

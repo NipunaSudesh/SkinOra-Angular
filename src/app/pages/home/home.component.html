@@ -37,3 +37,46 @@
     <app-button variant="outline">Outline Button</app-button>
   </div>
 </div>
+<!-- ===== PRODUCT CART TEST ===== -->
+<app-typography variant="h2" text="Product Cart Test"></app-typography>
+
+<app-product-cart
+  [id]="product.id"
+  [slug]="product.slug"
+  [OPrice]="product.OPrice"
+  [NPrice]="product.NPrice"
+  [imgUrl]="product.imgUrl"
+  [productName]="product.productName"
+  [productDesc]="product.productDesc"
+  [rating]="product.rating"
+  [reviewCount]="product.reviewCount"
+></app-product-cart>
+
+
+<!-- ===== CATEGORY CART TEST ===== -->
+<app-typography variant="h2" text="Category Cart Test"></app-typography>
+
+<app-category-cart
+  [img]="category.img"
+  [category]="category.category"
+  [description]="category.description"
+  [slug]="category.slug"
+></app-category-cart>
+
+
+<!-- ===== ADD CART TEST ===== -->
+<app-typography variant="h2" text="Add Cart Test"></app-typography>
+
+<app-add-cart
+  [id]="cartItem.id"
+  [slug]="cartItem.slug"
+  [imageUrl]="cartItem.imageUrl"
+  [name]="cartItem.name"
+  [price]="cartItem.price"
+  [oldPrice]="cartItem.oldPrice"
+  [discountPercent]="cartItem.discountPercent"
+  [stockStatus]="cartItem.stockStatus"
+  [category]="cartItem.category"
+  [brand]="cartItem.brand"
+  [qty]="cartItem.qty"
+></app-add-cart>

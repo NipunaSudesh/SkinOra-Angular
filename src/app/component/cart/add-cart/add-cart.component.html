@@ -1,0 +1,67 @@
+<p>add-cart works!</p>
+<div class="flex gap-4 bg-white p-4 rounded-lg shadow">
+
+  <img alt="name" [src]="imageUrl"
+       class="w-24 h-24 object-contain" />
+
+  <div class="flex-1">
+
+    <p class="text-xs text-gray-700">
+      {{ category }} > {{ brand }}
+    </p>
+
+    <div class="flex justify-between">
+      <h3 class="font-semibold">
+        {{ name }}
+        <span class="text-red-500">
+          {{ discountPercent }}% OFF
+        </span>
+      </h3>
+
+      <span *ngIf="stockStatus"
+        class="px-3 py-1 rounded-xl text-white text-sm font-medium"
+        [ngClass]="{
+          'bg-green-500': stockStatus === 'IN_STOCK',
+          'bg-red-500': stockStatus !== 'IN_STOCK'
+        }">
+        {{ stockStatus }}
+      </span>
+    </div>
+
+    <div class="flex items-end gap-3">
+      <p *ngIf="oldPrice"
+         class="text-sm text-gray-400 line-through">
+        Rs. {{ oldPrice }}
+      </p>
+
+      <p class="text-xl font-bold text-primary">
+        Rs. {{ price }}
+      </p>
+    </div>
+
+    <div class="flex items-center gap-3 mt-3">
+
+      <div *ngIf="mode === 'cart'" class="flex items-center gap-2">
+        <button (click)="handleQtyChange(qty - 1)"
+                [disabled]="qty <= 1"
+                class="px-3 py-1 border rounded">
+          -
+        </button>
+
+        <span>{{ qty }}</span>
+
+        <button (click)="handleQtyChange(qty + 1)"
+                class="px-3 py-1 border rounded">
+          +
+        </button>
+      </div>
+
+      <button *ngIf="mode === 'cart'"
+              (click)="handleRemove()"
+              class="ml-auto text-red-500">
+        🗑
+      </button>
+
+    </div>
+  </div>
+</div>
