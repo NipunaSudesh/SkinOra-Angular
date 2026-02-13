@@ -5,7 +5,7 @@
         <div class="swiper-slide">
           <img
             [src]="item.img"
-            [alt]="item.alt"               
+            alt="item.alt"               
             class="w-full h-[150px] sm:h-[250px] md:h-[300px] lg:h-[450px] object-cover rounded-lg"
           />
         </div>
@@ -21,7 +21,7 @@
     (click)="prev()"
     class="absolute left-3 top-1/2 -translate-y-1/2 z-10
            w-10 h-10 flex items-center justify-center
-           bg-white/80 hover:bg-[#FFD700] text-gray-800
+           bg-white/80 hover:bg-secondary text-gray-800
            rounded-full shadow transition"
     type="button"
     aria-label="Previous slide"
@@ -34,7 +34,7 @@
     (click)="next()"
     class="absolute right-3 top-1/2 -translate-y-1/2 z-10
            w-10 h-10 flex items-center justify-center
-           bg-white/80 hover:bg-[#FFD700] text-gray-800
+           bg-white/80 hover:bg-secondary text-gray-800
            rounded-full shadow transition"
     type="button"
     aria-label="Next slide"
