@@ -1,0 +1,65 @@
+<div class="mt-10 flex flex-col items-center">
+
+  <!-- Header -->
+  <app-header
+    [title]="'Featured Products'"
+    [description]="'Premium Skincare And Beauty, Chosen Just For You'">
+  </app-header>
+
+  <div class="w-full max-w-8xl mx-auto  mt-8">
+
+    <!-- Loading State -->
+    <!-- <div *ngIf="isLoading" class="flex flex-col sm:flex-row justify-center items-center py-20 gap-4">
+      <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-primary border-solid"></div>
+      <span class="text-lg text-gray-600 font-medium">Loading featured products...</span>
+    </div> -->
+
+    <!-- Error State -->
+    <div *ngIf="!isLoading && errorMessage" class="text-center py-20">
+      <p class="text-xl text-red-600 font-medium">{{ errorMessage }}</p>
+      <button
+        class="mt-6 bg-primary text-white px-8 py-3 rounded-lg hover:bg-secondary transition duration-200 transform hover:scale-105"
+        (click)="fetchProducts()"
+      >
+        Try Again
+      </button>
+    </div>
+
+    <!-- Products Grid -->
+    <div *ngIf="!isLoading && !errorMessage && products.length > 0"
+         class=" flex flex-wrap gap-2 items-center justify-center">
+  <app-product-cart
+    *ngFor="let product of products | slice:0:15; trackBy: trackById"
+    [id]="product._id"
+    [slug]="product.slug"
+    [imgUrl]="product.imageUrl"
+    [productName]="product.name"
+    [productDesc]="product.shortDescription"
+    [rating]="product.rating"
+    [OPrice]="product.oldPrice"
+    [NPrice]="product.price"
+    [reviewCount]="product.reviewCount"
+    [discountPercent]="product.discountPercent"
+    class="hover:scale-105 transition-transform duration-300"
+  >
+      </app-product-cart>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!isLoading && !errorMessage && products.length === 0"
+         class="text-center py-20 text-gray-500 text-lg font-medium">
+      No featured products available right now.
+    </div>
+
+    <!-- View All Products Button -->
+    <div class="mt-12 flex justify-center">
+      <button
+        class="bg-primary text-white hover:bg-secondary px-10 py-2 rounded-xl font-medium text-lg transition duration-300 shadow-md hover:shadow-lg active:scale-95 transform"
+        (click)="handleAllProductsClick()"
+      >
+        View All Products
+      </button>
+    </div>
+
+  </div>
+</div>

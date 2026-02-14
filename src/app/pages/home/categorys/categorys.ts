@@ -95,7 +95,7 @@ private initSwiper() {
         return res.json();
       })
       .then(data => {
-        console.log('Full response data:', data);
+        // console.log('Full response data:', data);
         this.categories = data || [];
         this.loading = false;
         this.cdr.detectChanges();
