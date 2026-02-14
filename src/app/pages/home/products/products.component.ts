@@ -1,8 +1,7 @@
-// src/app/pages/products/products.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';  
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import axios from 'axios';
 import { HeaderComponent } from '../../../component/theme/header.component';
 import { ProductCartComponent } from '../../../component/cart/product-cart/product-cart.component';
 import { environment } from '../../../../environments/environment';
@@ -43,9 +42,9 @@ interface Product {
     HeaderComponent,
     ProductCartComponent
   ],
-  templateUrl: './products.component.html', 
+  templateUrl: './products.component.html',
 })
-export class ProductsComponent implements OnInit {   // ← fixed class name
+export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
   isLoading = true;
@@ -54,22 +53,41 @@ export class ProductsComponent implements OnInit {   // ← fixed class name
   private readonly API_URL = environment.SKINORA_API_URL;
 
   constructor(
-    private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef   
   ) {}
 
   ngOnInit() {
-    this.http.get<Product[]>(`${this.API_URL}/api/products`).subscribe({
-      next: (data) => {
-        this.products = data || [];
-        this.isLoading = false;
-      },
-      error: (err) => {
-        console.error('Error fetching products:', err);
-        this.errorMessage = 'Failed to load products. Please try again later.';
-        this.isLoading = false;
-      }
-    });
+    this.fetchProducts();
+  }
+
+  private async fetchProducts() {
+    this.isLoading = true;
+    this.errorMessage = null;
+    this.cdr.detectChanges();  
+
+    try {
+      const url = `${this.API_URL}/api/products`;
+      console.log('Fetching products from:', url);
+
+      const response = await axios.get(url);
+
+      console.log('Response status:', response.status);
+      console.log('Response data type:', Array.isArray(response.data) ? 'array' : typeof response.data);
+
+      this.products = Array.isArray(response.data) ? response.data : [];
+      this.isLoading = false;
+
+      console.log("product data :", this.products);
+
+      this.cdr.detectChanges();  // ← force template to re-render with new data
+    } catch (err: any) {
+      console.error('Error fetching products:', err.message || err);
+      this.errorMessage = 'Failed to load products. Please try again later.';
+      this.isLoading = false;
+      this.products = [];
+      this.cdr.detectChanges();
+    }
   }
 
   handleAllProductsClick(): void {

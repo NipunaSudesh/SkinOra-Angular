@@ -7,6 +7,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy.component';
 import { TermsComponent } from './pages/terms.component';
 import { ErrorComponent } from './pages/error.component';
 import { ThankYouComponent } from './pages/thank-you.component';
+import { AllCategoriesComponent } from './pages/all-categories/all-categories.component';
 
 export const routes: Routes = [
         {
@@ -19,6 +20,8 @@ export const routes: Routes = [
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'thank-you', component: ThankYouComponent },
+  { path: 'thank-you', component: ThankYouComponent },
+  { path: 'all-categories', component: AllCategoriesComponent }
 
     ],
   },
