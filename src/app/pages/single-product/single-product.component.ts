@@ -141,30 +141,82 @@ export class SingleProductComponent implements OnInit {
     }
   }
 
-  buyNow(): void {
-    const product = this.product();
-    if (!product) return;
+  // buyNow(): void {
+  //   const product = this.product();
+  //   if (!product) return;
 
-    const checkoutItem = {
-      _id: product._id,
-      slug: product.slug,
-      name: product.name,
-      imageUrl: product.imageUrl,
-      price: product.price,
-      qty: this.qty()
-    };
+  //   const checkoutItem = {
+  //     _id: product._id,
+  //     slug: product.slug,
+  //     name: product.name,
+  //     imageUrl: product.imageUrl,
+  //     price: product.price,
+  //     qty: this.qty()
+  //   };
 
-    const subtotal = product.price * this.qty();
-    const shipping = 350;
-    const total = subtotal + shipping;
+  //   const subtotal = product.price * this.qty();
+  //   const shipping = 350;
+  //   const total = subtotal + shipping;
 
-    this.router.navigate(['/checkout'], {
-      state: {
-        items: [checkoutItem],
-        subtotal,
-        shipping,
-        total
-      }
-    });
-  }
+  //   this.router.navigate(['/checkout'], {
+  //     state: {
+  //       items: [checkoutItem],
+  //       subtotal,
+  //       shipping,
+  //       total
+  //     }
+  //   });
+  // }
+buyNow(): void {
+  const product = this.product();
+  if (!product) return;
+
+  const checkoutItem = {
+    _id: product._id,
+    slug: product.slug,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+    oldPrice: product.oldPrice,
+    discountPercent: product.discountPercent,
+    stockStatus: product.stockStatus,
+    category: product.categorySlug,
+    brand: product.brand,
+    qty: this.qty()
+  };
+
+  const subtotal = product.price * this.qty();
+  const shipping = 350;
+  const total = subtotal + shipping;
+
+  console.log('Buy Now → sending to checkout:', { items: [checkoutItem], subtotal, total });
+
+  this.router.navigate(['/checkout'], {
+    state: {
+      items: [checkoutItem],
+      subtotal,
+      shipping,
+      total
+    }
+  });
 }
+
+}
+
+// handleCheckout() {
+//   if (!this.canCheckout()) {
+//     alert('Please select at least one item');
+//     return;
+//   }
+
+//   const checkoutData = {
+//     items: this.selectedItems(),
+//     subtotal: this.subtotal(),
+//     shipping: this.shippingTotal(),
+//     total: this.total()
+//   };
+
+//   console.log('SENDING TO CHECKOUT:', checkoutData); // ← add this log
+
+//   this.router.navigate(['/checkout'], { state: checkoutData });
+// }
