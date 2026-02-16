@@ -11,6 +11,9 @@ import { AllCategoriesComponent } from './pages/all-categories/all-categories.co
 import { CategoryPageComponent } from './pages/singleCategory/category-page.component';
 import { AllProductsComponent } from './pages/all-products/all-products.component';
 import { SingleProductComponent } from './pages/single-product/single-product.component';
+import { LoginComponent } from './pages/login/login.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
         {
@@ -22,6 +25,7 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'terms', component: TermsComponent },
+    { path: 'profile', component: ProfileComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'all-categories', component: AllCategoriesComponent },
@@ -30,5 +34,6 @@ export const routes: Routes = [
 { path: 'product/slug/:slug', component: SingleProductComponent, title: 'Product – SkinOra' },
     ],
   },
-  //  { path: '**', component: ErrorComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
