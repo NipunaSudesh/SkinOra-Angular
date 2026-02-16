@@ -1,18 +1,23 @@
-import { Component, Input } from '@angular/core';
-import { CartService } from '../../../services/cart';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon'; // for + / − icons
+import { CartService } from '../../../services/cart';   // adjust path
 
 @Component({
   selector: 'app-add-cart',
-    standalone: true, 
-  imports: [CommonModule],
-  templateUrl: './add-cart.component.html'
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatIconModule,           // ← add this for material icons
+  ],
+  templateUrl: './add-cart.component.html',
+
 })
 export class AddCartComponent {
-
   @Input() id!: string;
-  @Input() imageUrl!: string;
+  @Input() imageUrl?: string;
   @Input() name!: string;
+  @Input() selected: boolean = false;
   @Input() price!: number;
   @Input() slug!: string;
   @Input() oldPrice?: number;
@@ -21,16 +26,42 @@ export class AddCartComponent {
   @Input() category?: string;
   @Input() brand?: string;
   @Input() qty!: number;
-  @Input() mode: string = 'cart';
+  @Input() mode: 'cart' | 'wishlist' | 'order' = 'cart';
+
+  // Emit events so parent can react (and sync with backend if needed)
+  @Output() qtyChange = new EventEmitter<number>();
+  @Output() remove = new EventEmitter<void>();
+  @Output() toggleSelect = new EventEmitter<void>(); // if you have checkbox/select
 
   constructor(private cartService: CartService) {}
 
-  handleQtyChange(newQty: number) {
-    if (newQty < 1) return;
-    this.cartService.updateQtyLocal(this.slug, newQty);
+increaseQty() {
+  this.qty += 1;                         // ✅ increase by 1
+  this.qtyChange.emit(this.qty);         // notify parent
+  this.cartService.updateQtyLocal(this.slug, this.qty);
+}
+
+decreaseQty() {
+  if (this.qty <= 1) return;             // prevent < 1
+
+  this.qty -= 1;                         // ✅ decrease by 1
+  this.qtyChange.emit(this.qty);
+  this.cartService.updateQtyLocal(this.slug, this.qty);
+}
+
+
+  onRemove() {
+    this.remove.emit();                    // tell parent to handle remove
+    this.cartService.removeItemLocal(this.slug); // optimistic
   }
 
-  handleRemove() {
-    this.cartService.removeItemLocal(this.slug);
+  // Optional: if you want direct input field change
+  onQtyInput(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const value = Number(input.value);
+    if (!isNaN(value) && value >= 1) {
+      this.qtyChange.emit(value);
+      this.cartService.updateQtyLocal(this.slug, value);
+    }
   }
 }

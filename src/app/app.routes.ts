@@ -15,6 +15,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
+import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+
 export const routes: Routes = [
         {
     path: '',
@@ -30,6 +32,7 @@ export const routes: Routes = [
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'all-categories', component: AllCategoriesComponent },
   { path: 'all-products', component: AllProductsComponent },
+  { path: 'cart', component:AddToCartComponent },
 { path: 'product-category/:categorySlug', component: CategoryPageComponent, title: 'Category – SkinOra' },
 { path: 'product/slug/:slug', component: SingleProductComponent, title: 'Product – SkinOra' },
     ],
