@@ -194,16 +194,21 @@ updateQty(slug: string, newQty: number) {
     }
   }
 
-  handleCheckout() {
-    if (!this.canCheckout()) return;
-
-    this.router.navigate(['/checkout'], {
-      state: {
-        items: this.selectedItems(),
-        subtotal: this.subtotal(),
-        shipping: this.shippingTotal(),
-        total: this.total()
-      }
-    });
+handleCheckout() {
+  if (!this.canCheckout()) {
+    alert('Please select at least one item');
+    return;
   }
+
+  const checkoutData = {
+    items: this.selectedItems(),
+    subtotal: this.subtotal(),
+    shipping: this.shippingTotal(),
+    total: this.total()
+  };
+
+  console.log('SENDING TO CHECKOUT:', checkoutData); // ← add this log
+
+  this.router.navigate(['/checkout'], { state: checkoutData });
+}
 }

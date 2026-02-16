@@ -1,0 +1,113 @@
+<section class="w-full mx-auto p-4 max-w-7xl">
+  <h1 class="text-2xl md:text-3xl font-bold mb-6">Checkout</h1>
+
+  <div class="flex flex-col lg:flex-row gap-6 lg:gap-8">
+    <!-- LEFT: Items + Shipping Info -->
+    <div class="w-full lg:w-3/5 space-y-6 lg:space-y-8">
+
+      <!-- Shipping Information with Edit button -->
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-xl font-semibold">Shipping Information</h2>
+          <button
+            class="text-blue-600 hover:underline font-medium"
+            (click)="openEditShipping()"
+          >
+            Edit
+          </button>
+        </div>
+
+        <div class="space-y-2 text-gray-700">
+          <p>
+            Full Name:
+            <span class="font-medium ml-2">{{ fullName() }}</span>
+          </p>
+          <p>
+            Phone Number:
+            <span class="font-medium ml-2">{{ shippingInfo().phone || 'Not provided' }}</span>
+          </p>
+          <p>
+            Email:
+            <span class="font-medium ml-2">{{ shippingInfo().email || 'Not provided' }}</span>
+          </p>
+          <p>
+            Address:
+            <span class="font-medium ml-2">{{ shippingInfo().address || 'Not provided' }}</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Cart Items -->
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <h2 class="text-xl font-semibold mb-5">Order Items ({{ itemCount() }})</h2>
+
+        <div class="space-y-5">
+          @for (item of items(); track item.slug) {
+            <app-add-cart
+              [id]="item._id"
+              [slug]="item.slug"
+              [imageUrl]="item.imageUrl"
+              [name]="item.name"
+              [price]="item.price"
+              [qty]="item.qty"
+              [oldPrice]="item.oldPrice"
+              [discountPercent]="item.discountPercent"
+              [stockStatus]="item.stockStatus"
+              [category]="item.category"
+              [brand]="item.brand"
+              [mode]="'checkout'"
+            />
+          } @empty {
+            <p class="text-center text-gray-500 py-10">No items to checkout</p>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Order Summary -->
+    <div class="w-full lg:w-2/5">
+      <div class="bg-white rounded-xl shadow-md p-6 lg:sticky lg:top-6">
+        <h2 class="text-xl font-semibold mb-6">Order Summary</h2>
+
+        <div class="space-y-4">
+          <div class="flex justify-between text-gray-700">
+            <span>Subtotal ({{ itemCount() }} items)</span>
+            <span>Rs. {{ formattedSubtotal() }}</span>
+          </div>
+
+          <div class="flex justify-between text-gray-700">
+            <span>Shipping Fee</span>
+            <span>Rs. {{ formattedShipping() }}</span>
+          </div>
+
+          <hr class="my-4 border-gray-200" />
+
+          <div class="flex justify-between text-2xl font-bold text-gray-900">
+            <span>Total</span>
+            <span>Rs. {{ formattedTotal() }}</span>
+          </div>
+        </div>
+
+        <div class="mt-8 space-y-4">
+          <button
+            (click)="placeOrder()"
+            class="w-full bg-primary text-white py-2 rounded-lg font-medium text-lg hover:bg-primary/90 transition"
+          >
+            Place Order
+          </button>
+
+          <button
+            (click)="goBackToCart()"
+            class="w-full bg-gray-100 text-gray-800 py-2 rounded-lg font-medium hover:bg-gray-200 transition"
+          >
+            Back to Cart
+          </button>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-6">
+          Secure checkout • Pay with card, cash on delivery, or online banking
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

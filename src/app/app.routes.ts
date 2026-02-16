@@ -16,6 +16,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 import { AddToCartComponent } from './pages/add-to-cart/add-to-cart.component';
+import { CheckoutComponent } from './pages/checkout/checkout/checkout.component';
 
 export const routes: Routes = [
         {
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'all-categories', component: AllCategoriesComponent },
   { path: 'all-products', component: AllProductsComponent },
   { path: 'cart', component:AddToCartComponent },
+  { path: 'checkout', component:CheckoutComponent },
 { path: 'product-category/:categorySlug', component: CategoryPageComponent, title: 'Category – SkinOra' },
 { path: 'product/slug/:slug', component: SingleProductComponent, title: 'Product – SkinOra' },
     ],

@@ -8,7 +8,7 @@ import { CartService } from '../../../services/cart';   // adjust path
   standalone: true,
   imports: [
     CommonModule,
-    MatIconModule,           // ← add this for material icons
+    MatIconModule,          
   ],
   templateUrl: './add-cart.component.html',
 
@@ -26,7 +26,7 @@ export class AddCartComponent {
   @Input() category?: string;
   @Input() brand?: string;
   @Input() qty!: number;
-  @Input() mode: 'cart' | 'wishlist' | 'order' = 'cart';
+  @Input() mode: 'cart' | 'checkout' = 'cart';
 
   // Emit events so parent can react (and sync with backend if needed)
   @Output() qtyChange = new EventEmitter<number>();
