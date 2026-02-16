@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, signal, computed, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -8,9 +8,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import axios from 'axios';
 import { HeaderComponent } from '../../component/theme/header.component';
 import { ProductCartComponent } from '../../component/cart/product-cart/product-cart.component';
-import { environment } from '../../../environments/environment';
 import { ButtonComponent } from '../../component/theme/button.component';
-
+import { environment } from '../../../environments/environment';
 
 interface LongDescription {
   overview?: string;
@@ -50,13 +49,18 @@ interface Product {
     ButtonComponent
   ],
   templateUrl: './single-product.component.html',
-
 })
 export class SingleProductComponent implements OnInit {
-  product: Product | null = null;
-  relatedProducts: Product[] = [];
-  qty: number = 1;
-  isLoading: boolean = true;
+  product = signal<Product | null>(null);
+  relatedProducts = signal<Product[]>([]);
+  qty = signal(1);
+  isLoading = signal(true);
+  hasError = signal(false);
+
+  stars = computed(() => {
+    const rating = this.product()?.rating || 0;
+    return Array(5).fill(0).map((_, i) => (i < Math.round(rating) ? 1 : 0));
+  });
 
   constructor(
     private route: ActivatedRoute,
@@ -67,54 +71,58 @@ export class SingleProductComponent implements OnInit {
     const slug = this.route.snapshot.paramMap.get('slug');
     if (slug) {
       this.loadProduct(slug);
+    } else {
+      this.hasError.set(true);
+      this.isLoading.set(false);
     }
   }
 
   async loadProduct(slug: string): Promise<void> {
-    this.isLoading = true;
+    this.isLoading.set(true);
+    this.hasError.set(false);
 
     try {
       // Fetch single product
       const productRes = await axios.get<Product>(
         `${environment.SKINORA_API_URL}/api/products/slug/${slug}`
       );
-      this.product = productRes.data;
-console.log("single product i s:" ,this.product)
+      this.product.set(productRes.data);
+      console.log("single product is:", this.product());
+
       // Fetch related products
-      if (this.product?.categorySlug) {
+      if (this.product()?.categorySlug) {
         const categoryRes = await axios.get<Product[]>(
-          `${environment.SKINORA_API_URL}/api/categories/${this.product.categorySlug}`
+          `${environment.SKINORA_API_URL}/api/categories/${this.product()!.categorySlug}`
         );
 
-        this.relatedProducts = categoryRes.data
-          .filter(p => p.slug !== slug)
-          .slice(0, 10);
+        this.relatedProducts.set(
+          categoryRes.data
+            .filter(p => p.slug !== slug)
+            .slice(0, 10)
+        );
       }
     } catch (error) {
       console.error('Error loading product:', error);
-      this.product = null;
+      this.hasError.set(true);
+      this.product.set(null);
     } finally {
-      this.isLoading = false;
+      this.isLoading.set(false);
     }
   }
 
-  // Quantity controls
   increaseQty(): void {
-    this.qty++;
+    this.qty.update(q => q + 1);
   }
 
   decreaseQty(): void {
-    if (this.qty > 1) {
-      this.qty--;
-    }
+    this.qty.update(q => Math.max(1, q - 1));
   }
 
-  // Add to Cart
   async addToCart(): Promise<void> {
-    if (!this.product) return;
+    const product = this.product();
+    if (!product) return;
 
     const token = localStorage.getItem('token');
-
     if (!token) {
       this.router.navigate(['/login']);
       return;
@@ -123,12 +131,9 @@ console.log("single product i s:" ,this.product)
     try {
       await axios.post(
         `${environment.SKINORA_API_URL}/api/cart/add`,
-        { productId: this.product._id, qty: this.qty },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
+        { productId: product._id, qty: this.qty() },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-
       this.router.navigate(['/cart']);
     } catch (error) {
       console.error('Add to cart failed:', error);
@@ -136,20 +141,20 @@ console.log("single product i s:" ,this.product)
     }
   }
 
-  // Buy Now
   buyNow(): void {
-    if (!this.product) return;
+    const product = this.product();
+    if (!product) return;
 
     const checkoutItem = {
-      id: this.product._id,
-      slug: this.product.slug,
-      name: this.product.name,
-      imageUrl: this.product.imageUrl,
-      price: this.product.price,
-      qty: this.qty
+      _id: product._id,
+      slug: product.slug,
+      name: product.name,
+      imageUrl: product.imageUrl,
+      price: product.price,
+      qty: this.qty()
     };
 
-    const subtotal = this.product.price * this.qty;
+    const subtotal = product.price * this.qty();
     const shipping = 350;
     const total = subtotal + shipping;
 
@@ -161,10 +166,5 @@ console.log("single product i s:" ,this.product)
         total
       }
     });
-  }
-
-  // Optional: helper for star rating display
-  get stars(): number[] {
-    return Array(5).fill(0).map((_, i) => i < Math.round(this.product?.rating || 0) ? 1 : 0);
   }
 }
