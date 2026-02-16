@@ -1,9 +1,9 @@
-<section class="my-8 md:my-10 px-4 sm:px-6 lg:px-8">
+<section class="my-8 md:my-10">
 
-  <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 relative">
+  <div class="flex flex-col lg:flex-row  relative">
 
     <!-- Desktop Filter Sidebar -->
-    <div class="hidden lg:block lg:w-72 xl:w-80 shrink-0">
+    <div class="hidden lg:block lg:w-72 xl:w-72 shrink-0">
       <app-product-filter
         [filters]="filters"
         (filtersChange)="filters = $event; applyFilters()"
@@ -87,7 +87,7 @@
           </p>
 
           <!-- Products Grid -->
-          <div class="flex flex-wrap gap-2 justify-center items-center">
+          <div class="flex flex-wrap gap-2 justify-center  items-center">
             @if (currentProducts.length > 0) {
               @for (product of currentProducts; track product.slug) {
                 <app-product-cart
@@ -114,32 +114,32 @@
           @if (totalPages > 1) {
             <div class="flex flex-wrap justify-center items-center gap-3 mt-10 md:mt-12">
               <button
-                mat-raised-button
-                color="primary"
-                class="min-w-28 py-2.5 text-base"
+             class="px-4 py-2 bg-primary text-white rounded disabled:opacity-40"
                 [disabled]="currentPage === 1"
                 (click)="goToPage(currentPage - 1)">
                 Previous
               </button>
 
               @for (page of [].constructor(totalPages); track $index) {
-                <button
-                  mat-mini-fab
-                  class="w-11 h-11 text-base"
-                  [color]="currentPage === $index + 1 ? 'accent' : 'primary'"
-                  (click)="goToPage($index + 1)">
-                  {{ $index + 1 }}
-                </button>
+<button
+
+  class="w-10 h-10 rounded-full border"
+  [ngClass]="{
+    'bg-secondary text-white': currentPage === $index + 1,
+    'bg-white': currentPage !== $index + 1
+  }"
+  (click)="goToPage($index + 1)"
+>
+  {{ $index + 1 }}
+</button>
               }
 
-              <button
-                mat-raised-button
-                color="primary"
-                class="min-w-28 py-2.5 text-base"
-                [disabled]="currentPage === totalPages"
-                (click)="goToPage(currentPage + 1)">
-                Next
-              </button>
+           <button
+            class="px-4 py-2 bg-primary text-white rounded disabled:opacity-40"
+            [disabled]="currentPage === totalPages"
+            (click)="goToPage(currentPage + 1)">
+            Next
+          </button>
             </div>
           }
         </div>

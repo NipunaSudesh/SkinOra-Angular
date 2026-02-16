@@ -7,6 +7,10 @@ export const serverRoutes: ServerRoute[] = [
     path: 'product-category/:categorySlug',
     renderMode: RenderMode.Server,
   },
+  {
+    path: 'product/slug/:slug',
+    renderMode: RenderMode.Server,
+  },
 
   // All other pages → prerender
   {

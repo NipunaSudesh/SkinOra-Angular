@@ -5,7 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { HeaderComponent } from '../../component/theme/header.component';
 import { CategoryCartComponent } from '../../component/cart/category-cart/category-cart.component';
-import axios from 'axios';  // ← import axios
+import axios from 'axios';  
 
 import { environment } from '../../../environments/environment';
 

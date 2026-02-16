@@ -1,0 +1,170 @@
+<div class="py-8">
+  @if (isLoading()) {
+    <div class="flex justify-center items-center py-32">
+      <mat-spinner diameter="60"></mat-spinner>
+    </div>
+  } @else if (hasError() || !product()) {
+    <div class="text-center py-20 text-xl text-gray-600">
+      Product not found or failed to load
+    </div>
+  } @else {
+    <!-- Main Product Section -->
+    <section class="flex flex-col lg:flex-row gap-8">
+      <!-- Product Image -->
+      <div class="w-full lg:w-1/2 rounded-xl shadow-lg py-4" style="height: 440px;">
+        <img
+          [src]="product()!.imageUrl"
+          [alt]="product()!.name"
+          class="w-full h-full object-contain rounded-lg"
+        />
+      </div>
+
+      <!-- Product Details -->
+      <div class="w-full lg:w-1/2 flex flex-col gap-6">
+        <div class="bg-gray-100 p-6 rounded-xl flex flex-col gap-4">
+          <!-- Brand + Stock -->
+          <div class="flex justify-between items-center">
+            <h2 class="text-lg font-medium text-gray-700">
+              {{ product()!.brand }}
+            </h2>
+            <span
+              class="px-3 py-1 rounded-xl text-white text-sm font-medium"
+              [ngClass]="product()!.stockStatus === 'IN_STOCK' ? 'bg-green-600' : 'bg-red-600'"
+            >
+              {{ product()!.stockStatus === 'IN_STOCK' ? 'In Stock' : 'Out of Stock' }}
+            </span>
+          </div>
+
+          <!-- Product Name -->
+          <h1 class="text-2xl font-bold text-gray-800">
+            {{ product()!.name }}
+          </h1>
+
+          <!-- Rating -->
+          <div class="flex items-center gap-1">
+            @for (star of stars(); track $index) {
+              <mat-icon
+                [ngClass]="star === 1 ? 'text-yellow-500' : 'text-gray-200'"
+                class="text-xl"
+              >
+                star
+              </mat-icon>
+            }
+            <span class="text-sm text-gray-500 ml-2">
+              ({{ product()!.reviewCount }} reviews)
+            </span>
+          </div>
+
+          <!-- Price -->
+          <div class="flex items-center gap-3">
+            @if (product()!.oldPrice) {
+              <p class="text-gray-400 line-through">
+                Rs. {{ product()!.oldPrice }}.00
+              </p>
+            }
+            @if (product()!.discountPercent) {
+              <p class="text-red-600 font-medium">
+                SAVE {{ product()!.discountPercent }}% OFF
+              </p>
+            }
+          </div>
+
+          <p class="text-3xl font-bold text-primary">
+            Rs. {{ product()!.price }}.00
+          </p>
+
+          <!-- Quantity & Buttons -->
+          <div class="flex flex-col md:flex-row gap-4">
+            <!-- Quantity Selector -->
+            <div class="flex items-center justify-between rounded-full border border-gray-300 px-4 w-32 shadow-xl py-1">
+              <button class="text-xl font-medium" (click)="decreaseQty()">−</button>
+              <span class="text-xl font-medium">{{ qty() }}</span>
+              <button class="text-xl font-medium" (click)="increaseQty()">+</button>
+            </div>
+
+            <!-- Add to Cart -->
+            <button
+              class="flex-1 py-2 rounded-full text-base font-medium border border-primary hover:text-white hover:bg-primary transition-colors duration-200 shadow-xl"
+              (click)="addToCart()"
+            >
+              Add to Cart
+            </button>
+
+            <!-- Buy Now -->
+            <button
+              class="flex-1 py-2 rounded-full text-base font-medium transition-colors duration-200 bg-primary hover:bg-secondary text-white shadow-xl"
+              (click)="buyNow()"
+            >
+              Buy Now
+            </button>
+          </div>
+
+          <!-- Shipping & Guarantee -->
+          <div class="mt-6 space-y-3 text-sm text-gray-700">
+            <div class="flex items-center gap-2">
+              <mat-icon class="text-green-600">local_shipping</mat-icon>
+              Island-wide shipping available
+            </div>
+            <div class="flex items-center gap-2">
+              <mat-icon class="text-green-600">verified</mat-icon>
+              100% Authentic Products
+            </div>
+          </div>
+        </div>
+
+        <!-- Description Section -->
+        <div class="bg-gray-100 p-6 rounded-xl">
+          <h3 class="text-2xl font-bold underline mb-4">Description</h3>
+          <p class="text-gray-700 leading-relaxed mb-6">
+            {{ product()!.longDescription?.overview || 'No overview available.' }}
+          </p>
+
+          @if (product()!.longDescription?.keyUses?.length) {
+            <h4 class="text-xl font-medium underline mt-6 mb-2">Key Uses</h4>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              @for (use of product()!.longDescription!.keyUses; track $index) {
+                <li>{{ use }}</li>
+              }
+            </ul>
+          }
+
+          @if (product()!.longDescription?.keyIngredients?.length) {
+            <h4 class="text-xl font-medium underline mt-6 mb-2">Key Ingredients</h4>
+            <ul class="list-disc list-inside space-y-1 text-gray-700">
+              @for (ing of product()!.longDescription!.keyIngredients; track $index) {
+                <li>{{ ing }}</li>
+              }
+            </ul>
+          }
+
+          @if (product()!.longDescription?.howToUse) {
+            <h4 class="text-xl font-medium underline mt-6 mb-2">How to Use</h4>
+            <p class="text-gray-700 leading-relaxed">
+              {{ product()!.longDescription!.howToUse }}
+            </p>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- You May Also Like -->
+    <section class="mt-16">
+      <app-header [title]="'You May Also Like'"></app-header>
+
+      <div class="flex flex-wrap gap-4 justify-center">
+        @for (item of relatedProducts(); track item._id) {
+          <app-product-cart
+            [slug]="item.slug"
+            [imgUrl]="item.imageUrl"
+            [productName]="item.name"
+            [productDesc]="item.shortDescription"
+            [rating]="item.rating"
+            [OPrice]="item.oldPrice"
+            [NPrice]="item.price"
+            [reviewCount]="item.reviewCount"
+          />
+        }
+      </div>
+    </section>
+  }
+</div>
