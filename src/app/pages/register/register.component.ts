@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms'; // ← add NgForm if you want form ref
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
@@ -22,30 +22,30 @@ export class RegisterComponent {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private cdr: ChangeDetectorRef   // ← this is the key addition
+    private cdr: ChangeDetectorRef
   ) {}
 
-  handleSubmit(form?: NgForm) {  // optional: pass form if you want extra validation
+  handleSubmit(form?: NgForm) {
     this.message = '';
     this.messageType = '';
-    this.cdr.detectChanges();   // clear UI immediately
+    this.cdr.markForCheck();  
 
-    // Optional: client-side check (already have password match, but good practice)
     if (form && form.invalid) {
       this.message = 'Please fill all required fields correctly';
       this.messageType = 'error';
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
       return;
     }
 
     if (this.password !== this.confirmPassword) {
       this.message = 'Passwords do not match';
       this.messageType = 'error';
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
+
       setTimeout(() => {
         this.message = '';
         this.messageType = '';
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       }, 3000);
       return;
     }
@@ -62,19 +62,15 @@ export class RegisterComponent {
         next: (res) => {
           this.message = 'Registration successful! Redirecting to login...';
           this.messageType = 'success';
-          this.cdr.detectChanges();   // ← force update
+          this.cdr.markForCheck();  
 
-          // Optional: store token/user if backend returns it immediately
-          // localStorage.setItem('token', res.token); etc.
 
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 1800);
+          setTimeout(() => this.router.navigate(['/login']), 1800);
 
           setTimeout(() => {
             this.message = '';
             this.messageType = '';
-            this.cdr.detectChanges();
+            this.cdr.markForCheck();
           }, 4000);
         },
 
@@ -82,7 +78,6 @@ export class RegisterComponent {
           let errorMsg = 'Something went wrong. Please try again.';
 
           if (err.status === 400 || err.status === 409) {
-            // Common for register: email taken, weak password, etc.
             errorMsg =
               err.error?.message ||
               err.error?.error ||
@@ -92,21 +87,22 @@ export class RegisterComponent {
             errorMsg = 'Cannot reach the server. Check your connection.';
           }
 
-          // Normalize common backend messages
-          if (errorMsg.toLowerCase().includes('email already') || errorMsg.includes('exists')) {
+          // Normalize frequent backend phrases
+          const lowerMsg = errorMsg.toLowerCase();
+          if (lowerMsg.includes('email already') || lowerMsg.includes('exists') || lowerMsg.includes('taken')) {
             errorMsg = 'This email is already registered.';
-          } else if (errorMsg.toLowerCase().includes('password')) {
-            errorMsg = 'Password requirements not met.';
+          } else if (lowerMsg.includes('password')) {
+            errorMsg = 'Password requirements not met. Please choose a stronger password.';
           }
 
           this.message = errorMsg;
           this.messageType = 'error';
-          this.cdr.detectChanges();   // ← critical: force UI to show error
+          this.cdr.markForCheck();  
 
           setTimeout(() => {
             this.message = '';
             this.messageType = '';
-            this.cdr.detectChanges();
+            this.cdr.markForCheck();
           }, 5000);
         },
       });

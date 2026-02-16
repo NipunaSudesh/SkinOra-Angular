@@ -1,9 +1,8 @@
-// src/app/pages/login/login.component.ts
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';   // ← replace axios
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { IMAGES } from '../../../../public/images';
 
@@ -30,17 +29,17 @@ export class LoginComponent {
   handleSubmit(form: NgForm) {
     this.message = '';
     this.messageType = '';
-    this.cdr.detectChanges();
+    this.cdr.markForCheck();
 
     if (form.invalid) {
       this.message = 'Please fill in all required fields';
       this.messageType = 'error';
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
 
       setTimeout(() => {
         this.message = '';
         this.messageType = '';
-        this.cdr.detectChanges();
+        this.cdr.markForCheck();
       }, 3000);
       return;
     }
@@ -56,8 +55,7 @@ export class LoginComponent {
         next: (res) => {
           this.message = 'Login successful! Redirecting...';
           this.messageType = 'success';
-          this.cdr.detectChanges();
-
+          this.cdr.markForCheck();  
           localStorage.setItem('token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
 
@@ -66,7 +64,7 @@ export class LoginComponent {
           setTimeout(() => {
             this.message = '';
             this.messageType = '';
-            this.cdr.detectChanges();
+            this.cdr.markForCheck();
           }, 4000);
         },
 
@@ -84,12 +82,12 @@ export class LoginComponent {
 
           this.message = backendMessage;
           this.messageType = 'error';
-          this.cdr.detectChanges();          
+          this.cdr.markForCheck();  
 
           setTimeout(() => {
             this.message = '';
             this.messageType = '';
-            this.cdr.detectChanges();
+            this.cdr.markForCheck();
           }, 4000);
         },
       });
