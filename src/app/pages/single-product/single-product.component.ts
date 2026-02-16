@@ -8,7 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import axios from 'axios';
 import { HeaderComponent } from '../../component/theme/header.component';
 import { ProductCartComponent } from '../../component/cart/product-cart/product-cart.component';
-import { ButtonComponent } from '../../component/theme/button.component';
+
 import { environment } from '../../../environments/environment';
 
 interface LongDescription {
@@ -45,8 +45,8 @@ interface Product {
     MatButtonModule,
     MatProgressSpinnerModule,
     HeaderComponent,
-    ProductCartComponent,
-    ButtonComponent
+    ProductCartComponent
+
   ],
   templateUrl: './single-product.component.html',
 })
