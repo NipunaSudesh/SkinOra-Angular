@@ -10,8 +10,9 @@ import {
 } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { AddCartComponent } from '../../../component/cart/add-cart/add-cart.component';
+import {  HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
-// ── Interfaces ───────────────────────────────────────────────────────────────
 interface CheckoutNavigationState {
   items: any[];
   subtotal: number;
@@ -27,7 +28,6 @@ interface ShippingInfo {
   address: string;
 }
 
-// ── Custom Edit Shipping Dialog ─────────────────────────────────────────────
 @Component({
   selector: 'app-edit-shipping-dialog',
   standalone: true,
@@ -171,11 +171,13 @@ export class EditShippingDialogComponent {
     FormsModule,
     MatDialogModule,
     MatButtonModule,
-    AddCartComponent
+    AddCartComponent,
+    HttpClientModule   
   ],
   templateUrl: './checkout.component.html',
 })
 export class CheckoutComponent implements OnInit {
+  private http = inject(HttpClient);
   private router = inject(Router);
   private dialog = inject(MatDialog);
 
@@ -191,7 +193,8 @@ export class CheckoutComponent implements OnInit {
     email: '',
     address: ''
   });
-
+  loading = signal<boolean>(false);
+  errorMsg = signal<string>('');
   itemCount = computed(() => this.items().length);
   formattedSubtotal = computed(() => this.subtotal().toFixed(2));
   formattedShipping = computed(() => this.shipping().toFixed(2));
@@ -246,16 +249,62 @@ export class CheckoutComponent implements OnInit {
       }
     });
   }
+async placeOrder() {
+    // Client-side validation
+    const info = this.shippingInfo();
+    if (!info.firstName || !info.lastName || !info.phone || !info.email || !info.address) {
+      this.errorMsg.set('Please fill in all shipping information.');
+      return;
+    }
 
-  placeOrder() {
-    console.log('Placing order with:', {
-      items: this.items(),
-      shippingInfo: this.shippingInfo(),
-      total: this.total()
-    });
-    // TODO: send to backend later
-    this.router.navigate(['/thank-you']);
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.errorMsg.set('Please login again.');
+      setTimeout(() => this.router.navigate(['/login']), 1800);
+      return;
+    }
+
+    const orderData = {
+      items: this.items().map(item => ({
+        product: item._id || item.id,
+        qty: item.qty || 1,
+        price: item.price,
+      })),
+      shippingInfo: { ...info },
+      subtotal: this.subtotal(),
+      shipping: this.shipping(),
+      totalAmount: this.total()
+    };
+
+    this.loading.set(true);
+    this.errorMsg.set('');
+
+    try {
+      const headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      });
+
+      const result: any = await this.http.post(`${environment.SKINORA_API_URL}/api/auth/place-order`, orderData, { headers }).toPromise();
+
+      // Navigate to thank-you page with order ID
+      this.router.navigate(['/thank-you'], { state: { orderId: result.order?._id } });
+    } catch (err: any) {
+      console.error('Order placement error:', err);
+      this.errorMsg.set(err?.error?.message || 'Something went wrong. Please try again.');
+    } finally {
+      this.loading.set(false);
+    }
   }
+  // placeOrder() {
+  //   console.log('Placing order with:', {
+  //     items: this.items(),
+  //     shippingInfo: this.shippingInfo(),
+  //     total: this.total()
+  //   });
+  //   // TODO: send to backend later
+  //   this.router.navigate(['/thank-you']);
+  // }
 
   goBackToCart() {
     this.router.navigate(['/cart']);
