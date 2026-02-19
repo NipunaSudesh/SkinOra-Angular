@@ -5,12 +5,10 @@ import { Router, RouterModule } from '@angular/router';
 import { environment } from '../../../environments/environment';
 import { AddCartComponent } from '../../component/cart/add-cart/add-cart.component';
 
-// ────────────────────────────────────────────────
-// Interfaces
-// ────────────────────────────────────────────────
+
 interface Product {
   _id: string;
-  slug?: string;           // made optional
+  slug?: string;           
   name: string;
   price: number;
   image?: string;
@@ -22,7 +20,7 @@ interface Product {
 }
 
 interface CartApiItem {
-  product: Product | null;   // allow null to match reality
+  product: Product | null;  
   qty: number;
 }
 
