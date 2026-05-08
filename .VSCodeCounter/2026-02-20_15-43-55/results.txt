@@ -1,0 +1,176 @@
+Date : 2026-02-20 15:43:55
+Directory : d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular
+Total : 97 files,  15062 codes, 371 comments, 762 blanks, all 16195 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| JSON               |          6 |      9,890 |          4 |          7 |      9,901 |
+| TypeScript         |         54 |      2,947 |        120 |        426 |      3,493 |
+| HTML               |         30 |      1,742 |        222 |        285 |      2,249 |
+| XML                |          1 |        338 |          0 |          1 |        339 |
+| PostCSS            |          2 |         57 |         11 |         12 |         80 |
+| Markdown           |          1 |         36 |          0 |         24 |         60 |
+| JSON with Comments |          1 |         31 |          2 |          1 |         34 |
+| SCSS               |          1 |         20 |         12 |          6 |         38 |
+| Dotenv             |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                              |         97 |     15,062 |        371 |        762 |     16,195 |
+| . (Files)                                                                                                                                      |         10 |      9,995 |          8 |         32 |     10,035 |
+| public                                                                                                                                         |          2 |        349 |          0 |          2 |        351 |
+| public\images                                                                                                                                  |          2 |        349 |          0 |          2 |        351 |
+| src                                                                                                                                            |         85 |      4,718 |        363 |        728 |      5,809 |
+| src (Files)                                                                                                                                    |          6 |        141 |         47 |         32 |        220 |
+| src\app                                                                                                                                        |         76 |      4,568 |        314 |        693 |      5,575 |
+| src\app (Files)                                                                                                                                |          8 |        135 |          4 |         33 |        172 |
+| src\app\component                                                                                                                              |         21 |        743 |         56 |        125 |        924 |
+| src\app\component\cart                                                                                                                         |          6 |        335 |         27 |         63 |        425 |
+| src\app\component\cart\add-cart                                                                                                                |          2 |        128 |         10 |         26 |        164 |
+| src\app\component\cart\category-cart                                                                                                           |          2 |         53 |          3 |          7 |         63 |
+| src\app\component\cart\product-cart                                                                                                            |          2 |        154 |         14 |         30 |        198 |
+| src\app\component\layout                                                                                                                       |         10 |        272 |         29 |         47 |        348 |
+| src\app\component\layout\b-navbar                                                                                                              |          2 |         37 |          0 |          5 |         42 |
+| src\app\component\layout\footer                                                                                                                |          2 |         79 |          7 |         12 |         98 |
+| src\app\component\layout\navbar                                                                                                                |          2 |         14 |          2 |          4 |         20 |
+| src\app\component\layout\public-layout                                                                                                         |          2 |         26 |          3 |          4 |         33 |
+| src\app\component\layout\t-navbar                                                                                                              |          2 |        116 |         17 |         22 |        155 |
+| src\app\component\theme                                                                                                                        |          5 |        136 |          0 |         15 |        151 |
+| src\app\pages                                                                                                                                  |         46 |      3,621 |        251 |        518 |      4,390 |
+| src\app\pages (Files)                                                                                                                          |          4 |        229 |          0 |          7 |        236 |
+| src\app\pages\about                                                                                                                            |          2 |         58 |          5 |          9 |         72 |
+| src\app\pages\add-to-cart                                                                                                                      |          2 |        233 |          5 |         47 |        285 |
+| src\app\pages\all-categories                                                                                                                   |          2 |        113 |          7 |         12 |        132 |
+| src\app\pages\all-products                                                                                                                     |          2 |        234 |         11 |         31 |        276 |
+| src\app\pages\checkout                                                                                                                         |          2 |        379 |         17 |         35 |        431 |
+| src\app\pages\checkout\checkout                                                                                                                |          2 |        379 |         17 |         35 |        431 |
+| src\app\pages\contact                                                                                                                          |          2 |         98 |          6 |         16 |        120 |
+| src\app\pages\home                                                                                                                             |         14 |        559 |         38 |         91 |        688 |
+| src\app\pages\home\about-skin-ora                                                                                                              |          2 |         35 |          2 |          5 |         42 |
+| src\app\pages\home\banner                                                                                                                      |          2 |         86 |          3 |         12 |        101 |
+| src\app\pages\home\categorys                                                                                                                   |          2 |        163 |         12 |         29 |        204 |
+| src\app\pages\home\customer-testimonials                                                                                                       |          2 |         72 |          3 |         10 |         85 |
+| src\app\pages\home\features                                                                                                                    |          2 |         58 |          1 |          5 |         64 |
+| src\app\pages\home\index                                                                                                                       |          2 |         20 |          0 |          6 |         26 |
+| src\app\pages\home\products                                                                                                                    |          2 |        125 |         17 |         24 |        166 |
+| src\app\pages\login                                                                                                                            |          2 |        136 |          4 |         24 |        164 |
+| src\app\pages\profile                                                                                                                          |          2 |        388 |         62 |         82 |        532 |
+| src\app\pages\register                                                                                                                         |          2 |        181 |          5 |         26 |        212 |
+| src\app\pages\single-product                                                                                                                   |          2 |        294 |         53 |         45 |        392 |
+| src\app\pages\singleCategory                                                                                                                   |          8 |        719 |         38 |         93 |        850 |
+| src\app\pages\singleCategory (Files)                                                                                                           |          2 |        111 |          6 |         14 |        131 |
+| src\app\pages\singleCategory\category-product                                                                                                  |          2 |        265 |         14 |         41 |        320 |
+| src\app\pages\singleCategory\mobile-filter-drawer                                                                                              |          2 |        188 |         13 |         22 |        223 |
+| src\app\pages\singleCategory\product-filter                                                                                                    |          2 |        155 |          5 |         16 |        176 |
+| src\app\services                                                                                                                               |          1 |         69 |          3 |         17 |         89 |
+| src\environments                                                                                                                               |          3 |          9 |          2 |          3 |         14 |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                                                                                                       | language           | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\README.md                                                                             | Markdown           |         36 |          0 |         24 |         60 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\angular.json                                                                          | JSON               |         80 |          0 |          1 |         81 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\package-lock.json                                                                     | JSON               |      9,717 |          0 |          1 |      9,718 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\package.json                                                                          | JSON               |         57 |          0 |          2 |         59 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\postcss.config.ts                                                                     | TypeScript         |          6 |          1 |          0 |          7 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\proxy.conf.json                                                                       | JSON               |          8 |          0 |          1 |          9 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\public\images\index.ts                                                                | TypeScript         |         11 |          0 |          1 |         12 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\public\images\logo.svg                                                                | XML                |        338 |          0 |          1 |        339 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.config.server.ts                                                          | TypeScript         |         10 |          0 |          3 |         13 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.config.ts                                                                 | TypeScript         |         13 |          0 |          3 |         16 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.css                                                                       | PostCSS            |          0 |          0 |          1 |          1 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.html                                                                      | HTML               |          1 |          0 |          0 |          1 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.routes.server.ts                                                          | TypeScript         |         15 |          2 |          4 |         21 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.routes.ts                                                                 | TypeScript         |         62 |          1 |         16 |         79 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.spec.ts                                                                   | TypeScript         |         20 |          0 |          4 |         24 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\app.ts                                                                        | TypeScript         |         14 |          1 |          2 |         17 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\add-cart\add-cart.component.html                               | HTML               |         73 |          8 |         16 |         97 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\add-cart\add-cart.component.ts                                 | TypeScript         |         55 |          2 |         10 |         67 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\category-cart\category-cart.component.html                     | HTML               |         33 |          3 |          2 |         38 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\category-cart\category-cart.component.ts                       | TypeScript         |         20 |          0 |          5 |         25 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\product-cart\product-cart.component.html                       | HTML               |         47 |          9 |         14 |         70 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\cart\product-cart\product-cart.component.ts                         | TypeScript         |        107 |          5 |         16 |        128 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\b-navbar\b-navbar.component.html                             | HTML               |         11 |          0 |          1 |         12 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\b-navbar\b-navbar.component.ts                               | TypeScript         |         26 |          0 |          4 |         30 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\footer\footer.component.html                                 | HTML               |         66 |          7 |         11 |         84 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\footer\footer.component.ts                                   | TypeScript         |         13 |          0 |          1 |         14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\navbar\navbar.component.html                                 | HTML               |          2 |          2 |          2 |          6 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\navbar\navbar.component.ts                                   | TypeScript         |         12 |          0 |          2 |         14 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\public-layout\public-layout.component.html                   | HTML               |          6 |          3 |          2 |         11 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\public-layout\public-layout.component.ts                     | TypeScript         |         20 |          0 |          2 |         22 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\t-navbar\t-navbar.component.html                             | HTML               |         68 |         17 |         14 |         99 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\layout\t-navbar\t-navbar.component.ts                               | TypeScript         |         48 |          0 |          8 |         56 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\theme\button.component.ts                                           | TypeScript         |         21 |          0 |          4 |         25 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\theme\header.component.ts                                           | TypeScript         |         17 |          0 |          2 |         19 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\theme\textarea.component.ts                                         | TypeScript         |         32 |          0 |          3 |         35 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\theme\textinput.component.ts                                        | TypeScript         |         31 |          0 |          3 |         34 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\component\theme\typography.component.ts                                       | TypeScript         |         35 |          0 |          3 |         38 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\about\about.component.html                                              | HTML               |         38 |          4 |          8 |         50 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\about\about.component.ts                                                | TypeScript         |         20 |          1 |          1 |         22 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\add-to-cart\add-to-cart.component.html                                  | HTML               |         63 |          2 |          8 |         73 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\add-to-cart\add-to-cart.component.ts                                    | TypeScript         |        170 |          3 |         39 |        212 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\all-categories\all-categories.component.html                            | HTML               |          1 |          0 |          1 |          2 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\all-categories\all-categories.component.ts                              | TypeScript         |        112 |          7 |         11 |        130 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\all-products\all-products.component.html                                | HTML               |        115 |         11 |         17 |        143 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\all-products\all-products.component.ts                                  | TypeScript         |        119 |          0 |         14 |        133 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\checkout\checkout\checkout.component.html                               | HTML               |        101 |          5 |         13 |        119 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\checkout\checkout\checkout.component.ts                                 | TypeScript         |        278 |         12 |         22 |        312 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\contact\contact.component.html                                          | HTML               |         68 |          3 |         10 |         81 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\contact\contact.component.ts                                            | TypeScript         |         30 |          3 |          6 |         39 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\error.component.ts                                                      | TypeScript         |         53 |          0 |          3 |         56 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\about-skin-ora\about-skin-ora.html                                 | HTML               |         23 |          2 |          4 |         29 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\about-skin-ora\about-skin-ora.ts                                   | TypeScript         |         12 |          0 |          1 |         13 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\banner\banner.html                                                 | HTML               |         38 |          3 |          3 |         44 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\banner\banner.ts                                                   | TypeScript         |         48 |          0 |          9 |         57 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\categorys\categorys.html                                           | HTML               |         60 |         10 |         11 |         81 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\categorys\categorys.ts                                             | TypeScript         |        103 |          2 |         18 |        123 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\customer-testimonials\customer-testimonials.html                   | HTML               |         31 |          3 |          8 |         42 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\customer-testimonials\customer-testimonials.ts                     | TypeScript         |         41 |          0 |          2 |         43 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\features\features.html                                             | HTML               |         17 |          0 |          3 |         20 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\features\features.ts                                               | TypeScript         |         41 |          1 |          2 |         44 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\index\index.html                                                   | HTML               |          6 |          0 |          2 |          8 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\index\index.ts                                                     | TypeScript         |         14 |          0 |          4 |         18 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\products\products.component.html                                   | HTML               |         41 |         16 |          9 |         66 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\home\products\products.component.ts                                     | TypeScript         |         84 |          1 |         15 |        100 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\login\login.component.html                                              | HTML               |         55 |          4 |         10 |         69 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\login\login.component.ts                                                | TypeScript         |         81 |          0 |         14 |         95 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\privacy-policy.component.ts                                             | TypeScript         |         58 |          0 |          1 |         59 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\profile\profile.component.html                                          | HTML               |        266 |         61 |         56 |        383 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\profile\profile.component.ts                                            | TypeScript         |        122 |          1 |         26 |        149 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\register\register.component.html                                        | HTML               |         88 |          4 |         10 |        102 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\register\register.component.ts                                          | TypeScript         |         93 |          1 |         16 |        110 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\single-product\single-product.component.html                            | HTML               |        141 |         14 |         15 |        170 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\single-product\single-product.component.ts                              | TypeScript         |        153 |         39 |         30 |        222 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\banner.component.ts                                      | TypeScript         |         75 |          2 |         10 |         87 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\category-page.component.ts                               | TypeScript         |         36 |          4 |          4 |         44 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\category-product\category-product.component.html         | HTML               |        117 |         13 |         19 |        149 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\category-product\category-product.component.ts           | TypeScript         |        148 |          1 |         22 |        171 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\mobile-filter-drawer\mobile-filter-drawer.component.html | HTML               |         86 |         13 |          9 |        108 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\mobile-filter-drawer\mobile-filter-drawer.component.ts   | TypeScript         |        102 |          0 |         13 |        115 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\product-filter\product-filter.component.html             | HTML               |         63 |          5 |          6 |         74 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\singleCategory\product-filter\product-filter.component.ts               | TypeScript         |         92 |          0 |         10 |        102 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\terms.component.ts                                                      | TypeScript         |         74 |          0 |          1 |         75 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\pages\thank-you.component.ts                                                  | TypeScript         |         44 |          0 |          2 |         46 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\app\services\cart.ts                                                              | TypeScript         |         69 |          3 |         17 |         89 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\environments\.env                                                                 | Dotenv             |          1 |          0 |          0 |          1 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\environments\environment.prod.ts                                                  | TypeScript         |          4 |          0 |          1 |          5 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\environments\environment.ts                                                       | TypeScript         |          4 |          2 |          2 |          8 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\index.html                                                                        | HTML               |         17 |          0 |          1 |         18 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\main.server.ts                                                                    | TypeScript         |          6 |          0 |          3 |          9 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\main.ts                                                                           | TypeScript         |          5 |          0 |          2 |          7 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\material-theme.scss                                                               | SCSS               |         20 |         12 |          6 |         38 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\server.ts                                                                         | TypeScript         |         36 |         24 |          9 |         69 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\src\styles.css                                                                        | PostCSS            |         57 |         11 |         11 |         79 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\tailwind.config.ts                                                                    | TypeScript         |         32 |          1 |          0 |         33 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\tsconfig.app.json                                                                     | JSON               |         15 |          2 |          1 |         18 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\tsconfig.json                                                                         | JSON with Comments |         31 |          2 |          1 |         34 |
+| d:\MyProject\AA_Git_Hub\Research-SkinOra\SkinOra-Angular\tsconfig.spec.json                                                                    | JSON               |         13 |          2 |          1 |         16 |
+| Total                                                                                                                                          |                    |     15,062 |        371 |        762 |     16,195 |
++------------------------------------------------------------------------------------------------------------------------------------------------+--------------------+------------+------------+------------+------------+
